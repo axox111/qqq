@@ -24,7 +24,7 @@ public class LinkedList {
         int i = 1;
         int size = this.getSize();
         if (0 > pos | pos > size) {
-            System.out.println("Position out of list size");
+            System.out.println("Insert position out of list size");
         } else if (pos == 0) {
             new_node.next = node;
             this.head = new_node;
@@ -37,6 +37,39 @@ public class LinkedList {
             node.next = new_node;
         }
     }  
+    
+    public void remove(int pos) {
+        Node node = this.head;
+        int i = 1;
+        int size = this.getSize();
+        if (pos < 0 | pos >= size) {
+            System.out.println("Remove position out of list lenght");
+        } else if (pos == 0){
+            System.out.println("Removing element - " + node.val);
+            this.head = node.next;
+        } else {
+            while(i != pos) {
+                node = node.next;
+                i++;
+                } 
+            System.out.println("Removing element - " + node.next.val);
+            node.next = node.next.next;
+            }
+    }
+    
+    public void getElem(int pos){
+        int i = 0;
+        Node node = this.head;
+        int size = this.getSize();
+        if (0 > pos | pos > size) {
+            System.out.println("Search position out of list size");
+        } else { while(i != pos) {
+                    node = node.next;
+                    i++;
+                }
+            System.out.println(node.val);
+            }
+    }
     
     public int getSize() {
         Node islast = this.head;
@@ -69,7 +102,10 @@ public class LinkedList {
         ll.insert(c);
         ll.insert(d);
         ll.insert(g,5);
-        ll.getSize();
+        System.out.println("List size - " + ll.getSize());
+        ll.getList();
+        ll.getElem(12);
+        ll.remove(4);
         ll.getList();
     }
 }
